@@ -3,47 +3,44 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: bare_conf_compsoc.aux
 The style file: abbrv.bst
 Database file #1: Blockchain.bib
-Warning--empty journal in Nakamoto2008
-Warning--there's a number but no volume in Nakamoto2008
 You've used 2 entries,
             2118 wiz_defined-function locations,
-            507 strings with 3937 characters,
-and the built_in function-call counts, 449 in all, are:
-= -- 39
+            510 strings with 3986 characters,
+and the built_in function-call counts, 514 in all, are:
+= -- 49
 > -- 14
 < -- 0
 + -- 6
 - -- 4
-* -- 23
-:= -- 86
+* -- 30
+:= -- 94
 add.period$ -- 6
 call.type$ -- 2
 change.case$ -- 7
 chr.to.int$ -- 0
-cite$ -- 4
-duplicate$ -- 22
-empty$ -- 41
+cite$ -- 2
+duplicate$ -- 23
+empty$ -- 48
 format.name$ -- 4
-if$ -- 89
+if$ -- 104
 int.to.chr$ -- 0
 int.to.str$ -- 2
 missing$ -- 3
 newline$ -- 13
 num.names$ -- 4
-pop$ -- 13
+pop$ -- 10
 preamble$ -- 1
 purify$ -- 6
 quote$ -- 0
-skip$ -- 12
+skip$ -- 13
 stack$ -- 0
-substring$ -- 10
-swap$ -- 1
+substring$ -- 29
+swap$ -- 2
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 6
-warning$ -- 2
-while$ -- 4
+warning$ -- 0
+while$ -- 6
 width$ -- 3
-write$ -- 22
-(There were 2 warnings)
+write$ -- 23
