@@ -38,7 +38,7 @@
 %% Retain all contribution notices and credits.
 %% ** Modified files should be clearly indicated as such, including  **
 %% ** renaming them and changing author support contact information. **
-%%*************************************************************************
+%%*****************x********************************************************
 
 
 % *** Authors should verify (and, if needed, correct) their LaTeX system  ***
@@ -434,7 +434,7 @@ I wish you the best of success.
 
 \section{O Bitcoin}
 
-A proposta do Bitcoin(\bitcoinA) surgiu em meados de 2008 em um artigo intitulado "Bitcoin: A Peer-to-Peer Electronic Cash System" escrito por um autor sob o pseudônimo de Satoshi Nakamoto. Ele utilizou varias propostas apresentadas no b-money, Bit Gold e Hashcash para criar uma moeda digital \textit{peer-to-peer}(P2P) que não depende de uma autoridade central, ou seja, para efetuar uma transação não é necessário a existência de uma autoridade central confiável para valida-la \cite{Nakamoto2008}.
+A proposta do Bitcoin(\bitcoinA) surgiu em meados de 2008 em um artigo intitulado "Bitcoin: A Peer-to-Peer Electronic Cash System" escrito por um autor sob o pseudônimo de Satoshi Nakamoto. Ele utilizou varias propostas apresentadas no b-money, Hashcash e Bitgold para criar uma moeda digital \textit{peer-to-peer}(P2P) que não depende de uma autoridade central, ou seja, para efetuar uma transação não é necessário a existência de uma autoridade central confiável para validá-la \cite{Nakamoto2008}.
 
 %%O conteudo desse parágrafo é importante, porem não sei se aqui é o melhor lugar para isso
 A grande inovação proposta por Nakamoto em seu artigo foi utilizar o conceito de prova de trabalho (\textit{proof-of-work}) para criar um consenso  distribuído confiável e resolver o problema de \textit{Double Spending}. Tal solução pode ser utilizada para alcançar um consenso em redes decentralizadas para provar a honestidade de eleições, registros, contratos e muito mais.
@@ -447,7 +447,7 @@ Atualmente exitem vários tipos de carteiras Bitcoin com diferentes níveis de s
 As carteiras também são classificadas de acordo com a sua autonomia e o tipo de interação com a rede Bitcoin:
 
 \begin{itemize}
-\item \textit{Full node}: armazena todo o histórico de transação da rede bitcoin (Blockchain), gerencia a carteira do usuário localmente e pode iniciar uma transação diretamente com a rede Bitcoin. Ele consegue validar a Blockchain oferecendo completa autonomia e uma validação de transações independente, porém ele consome uma grande quantidade de espaço em disco.
+\item \textit{Full node}: armazena todo o histórico de transação da rede bitcoin (Blockchain), gerencia a carteira do usuário localmente e pode iniciar uma transação diretamente com a rede Bitcoin. Ele consegue validar a blockchain oferecendo completa autonomia e uma validação de transações independente, porém ele consome uma grande quantidade de espaço em disco.
 \item \textit{Lightweight Client}: se conecta a um full node para ter acesso as transações da rede Bitcoin. Gerencia a carteira do usuário localmente, cria, valida e transmite as transações.
 \item \textit{Third-party API client}: o usuário ira interagir com a rede Bitcoin através de uma API fornecida por um servidor. A carteira poderá ser armazenada com o próprio usuário ou no servidor, porém as transações são sempre gerenciadas pelo servidor.
 \end{itemize}
@@ -475,7 +475,7 @@ Existem quatro funcionalidades que um nó pode ter na rede: carteira, minerador,
 
 Os nós que possuem a funcionalidade de blockchain completo mantém uma cópia completa e atualizada  da blockchian, fazendo com que eles possam verificar de maneira autônoma e autoritária qualquer transação sem qualquer referência externa. Alguns nós mantêm apenas uma parte da blockchain verificando as transações utilizando um método chamado verificação de pagamento simplificado (SPV). Esses nós são conhecidos como SPV ou peso-leve já que não armazenam toda a blockchain.
 
-Os nós com funcionalidade de minerar competem pela criação de novos blocos no Blockchain resolvendo algoritmos de prova de trabalho. Alguns nós de mineração são nós completos que matem uma cópia da Blockchian, enquanto outros são nós peso leve que participam de um pool de mineração. 
+Os nós com funcionalidade de minerar competem pela criação de novos blocos na blockchain resolvendo algoritmos de prova de trabalho. Alguns nós de mineração são nós completos que matem uma cópia da blockchian, enquanto outros são nós peso leve que participam de um pool de mineração. 
 
 As carteiras Bitcoin também podem fazer parte de um Full node para validar todas as transações da rede. Porém, cada vez mais is usuários utilizam carteiras SVP, isso vem ocorrendo porque cada vez mais os usuários vem usando carteiras em dispositivos com poucos recursos com um smartphone. 
 
@@ -490,36 +490,87 @@ Como os nós podem ficar offline line a qualquer momento os nós ativos precisam
 \subsection*{Verificação simplificada de pagamento}
 
 \subsection{Transações na rede Bitcoin}
-Uma transação Bitcoin informa a rede que uma carteira que controla uma quantia de Bitcoin autorizou a transferência de alguns de seus Bitcoins para outra carteira.
+\label{section:Transações na rede Bitcoin}
 
-Cada transação contém  um ou mais \textit{outputs}, que corresponde aos Bitcoins que serão transferidos a nova carteira, e um ou mais \textit{inputs}, que são quantias de Bitcoin do emissor. E é a partir dos \textit{outputs} da transação serão gerados os \textit{output} de transação não gastos que são utilizados no input de uma transação. Olhado de uma maneira mais técnica podemos falar que os \textit{inputs} são UTXOs consumidos em uma transação enquanto os \textit{outputs} são os UTXOs gerados em uma transação.
+O ciclo de vida de uma transação começa em sua criação, conhecido também como originação. Após ser criada ela deve ser assinada por uma ou mais assinaturas indicando a autorização da transferência dos fundos indicados na transação. Ela então deve ser transmitida para a rede através de um processo de \textit{flooding} (inundação). Ao chegar a um nó minerador as transações ficam em um local chamado de pool de transações, até ser incluída em um bloco da blockchain.
 
-A única exceção para essa regra de cadeia de \textit{inputs} e \textit{output} é para um tipo especial de transação chamada \textit{coinbase}. Essa transação é inserida no bloco minerado pelo minerador "vencedor", essa transação cria novos bitcoins que serão pagos para o minerador como recompensa por ter minerado o bloco. Como essa novas moedas acabaram de ser criadas essa transação não possui um \textit{input}.
+O remetente da transação não precisa confiar nos nós que ele utiliza para transmitir a transação, contanto que ele utilize mais de uma para garantir a propagação, e da mesma maneira os nós destinatários não precisam conhecer a identidade de que envia a transação. Como uma transação bitcoin não contem nenhum dado confidencial ela pode ser transmitida publicamente em qualquer transporte de rede conveniente.
 
-Um \textit{output} de transação é composto por dois campos importantes: (1)uma quantia de Bitcoin em uma unidade chamada Satoshi. Essa unidade corresponde a maior divisão que pode-se fazer em uma unidade de Bitcoin que é de 8 casas decimais, ou seja, 1 Satoshi é equivalente 0.00000001\bitcoinA. (2) O segundo campo é chamado de \textit{scriptPubKey}, ele contém os requisitos necessários para utilizar o \textit{output} de transação não gasto que será gerado.
+Assim que uma transação chega em um nó ela será validada por ele. Caso ela seja válida, o nó irá propaga-la para outros nós conectados a ele, e uma mensagem de sucesso será enviada para que originou a transação. Se a transação for invalida, o nó irá rejeita-lá e irá retornar uma mensagem de rejeição para que originou a mensagem. Essa regra de não propagar as transações invalidas serve para prevenir spam, ataques DDos e outros ataques maliciosos contra o sistema bitcoin.
 
-O \textit{input} de transação é composto por cinco campos: (1) O primeiro campo é o \textit{Transaction Hash}, ele corresponde a referência para transação na Blockchain que contém o UOTX a ser transferido. (2)O segundo é o \textit{output index} que identifica qual UTXO da transação será usado (primeiro é o 0). (3)Terceiro campo é o \textit{ScriptSig} que satisfaz as condições impostas pelo \textit{scriptPubKey}.
 
-Os \textit{outputs} de transação não-gastos, ou UTXOs(\textit{unspent transaction outputs}), são \textit{outputs} de uma transação que estão disponíveis para uma transação futura. Um UTXO é pedaço indivisível de um Bitcoin vinculado a uma chave primaria registrado na \textit{Blockchain} e reconhecido como uma unidade de moeda na rede. Cada UTXO tem um valor como múltiplo de uma unidade chamada Satoshi. Essa unidade é a maior divisão que pode-se fazer em uma unidade de Bitcoin que é de 8 casas decimais, ou seja, 1 Satoshi é equivalente 0.00000001\bitcoinA. 
 
-Ao criar um UTXO ele se torna indivisível, ou seja, seu valor não pode ser divido assim como não se pode dividir uma moeda. Se ao fazer uma transação o valor do UTXO, ou soma dos valores de vários UTXO, for maior que o valor desejado na transação é preciso gerar um troco, por consequência disso a maioria das transações Bitcoin irão gerar troco. Por exemplo,um usuário possui 3 UTXOs de Bitcoin e deseja fazer uma transação de 1 Bitcoin, essa transação precisará consumir todos os 3 UTXOs e irá produzir 2 outpus: uma para o destinatário da transação no valor de 1\bitcoinA{} e outro no valor de 2\bitcoinA{} como troco de volta para o usuário.
+\subsection*{Estrutura de uma transação}
 
-Essa administração dos UTXOs gastáveis em uma transação é feita automaticamente pela carteira Bitcoin do usuário, assim como sua quantia de Bitcoins. Essa quantia que toda carteira diz possuir não passa de todos os UTXOs associados a chave primaria daquela carteira que estão espalhados na Blockchain. Como efeito disso, não existe um armazenamento de saldo em uma carteira Bitcoin, o que existe na verdade são UTXOs dispersos na Blockchain vinculados a uma chave. O conceito de saldo de uma carteira Bitcoin não passa de uma abstração da operação de busca na Blockchain e a soma de todas as UTXOs pertencentes a chave primaria de uma carteira. 
+Uma transação bitcoin tem a finalidade de informar a rede que uma carteira que controla uma fonte de fundos bitcoin, chamado de \textit{input},  autorizou a transferência de alguns de seus bitcoins para um destino, chamado de \textit{output}. Esses \textit{inputs} e \textit{outputs} são quantias de bitcoin, pedaços indivisíveis, que são ficam bloqueados até que seu dono forneça a assinatura digital que libera essa quantia de bitcoin. Uma transação contém seis campos e sua estrutura e apresentada na Figura \ref{fig:Estrutura_transacao}.
 
-Os UTXOs são monitorados e armazenados na memória RAM por todos os nós da rede Bitcoin como um conjunto de dados chamado de \textit{pool} UTXO ou UTXO \textit{set}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[keepaspectratio=true, scale=0.7]{img/Estrutura_transacao.pdf}
+    \caption{Estrutura de uma transação \cite{DevBitKO}}
+    \label{fig:Estrutura_transacao}
+\end{figure}
+
+Cada transação pode conter mais de um \textit{input} e \textit{output}, e eles são armazenados nos campos \textit{vin}[] e \textit{vout}[] respectivamente. O tamanho desses vetores, que corresponde a quantidade de \textit{inputs} e \textit{outputs} de uma transação, é armazenado nos campos \#vin, para o \textit{vin}[], e \#vout, para o \textit{vout}[].
+
+Cada \textit{output} de transação possui 3 campos: \textit{nValue}, \textit{scriptPubkeyLen} e \textit{scriptPubkey}. O campo \textit{nValue} corresponde uma quantia de Bitcoin em uma unidade chamada Satoshi, essa unidade corresponde a maior divisão que pode-se fazer em uma unidade de Bitcoin que é de 8 casas decimais, ou seja, 1 Satoshi é equivalente 0.00000001\bitcoinA. O \textit{scriptPubkeyLen} armazena o tamanho do \textit{scriptPubkey} que é um script de travamento do UTXO, a linguagem script do bitcoin será apresentada na seção \ref{section:Validando transações}.
+
+Os \textit{outputs} de transação geram pedaços indivisíveis de bitcoin gastáveis chamadas de  \textit{output} de transação não gastos (\textit{Unspent transaction output}) ou UTXO. Ao criar um UTXO ele se torna indivisível, ou seja, seu valor não pode ser divido assim como não se pode dividir uma moeda. Esses UTXO são reconhecidos na rede como quantias de bitcoin que podem ser gastas em uma transação futura.
+
+Os UTXOs são monitorados e armazenados na memória RAM por todos os nós da rede Bitcoin como um conjunto de dados chamado de \textit{pool} UTXO ou UTXO \textit{set}. Sua administrarão é feita automaticamente pela carteira Bitcoin do usuário, assim como sua quantia de Bitcoins. Essa quantia que toda carteira diz possuir não passa de todos os UTXOs associados a chave primaria daquela carteira que estão espalhados na Blockchain. Como efeito disso, não existe um armazenamento de saldo em uma carteira Bitcoin, o que existe na verdade são UTXOs dispersos na blockchain vinculados a uma chave. O conceito de saldo de uma carteira Bitcoin não passa de uma abstração da operação de busca na blockchain e a soma de todas as UTXOs pertencentes a chave primaria de uma carteira.
+
+Os \textit{inputs} de transação são referências aos UTXOs que serão utilizados na transação. Cada \textit{input} possui quatro campos: \textit{hash}, \textit{n}, \textit{coinbaseLen} e \textit{nSequence}. O campo \textit{hash} corresponde ao duplo hash da transacão no blockchain que contém o UTXO que está sendo utilizado no \textit{input}, servindo como referência. O segundo campo armazena a posição do UTXO na transacão anterior, como um index de um vetor. O \textit{scriptSigLen} armazena o tamanho do \textit{scriptSig} que é o script que libera a utilização do UTXO. O \textit{nSequence} armazena o número de sequência do input de transação. Ele foi planejado para a funcionalidade de atualização da transação antes de ser incluída em um bloco através de múltiplas assinaturas, porém essa funcionalidade foi removida para reduzir a complexidade do protocolo.
+
+O \textit{nLockTime} serve como uma trava de tempo para a transação. Assim que o tempo estipulado pelo \textit{nLockTime} for ultrapassado a transação é travada é pode ser incluída em um bloco. Se o valor do \textit{nLockTime} dor 0 significa que a transação está travada, um valor menor que $5*10^8$ corresponde ao número de blocos que deve-se ter para travar a transação e um valor igual ou acima de $5*10^8$ corresponde ao tempo no formato UNIX que deve-se obter.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[keepaspectratio=true, scale=0.6]{img/Relacao_inpout_transacao.pdf}
+    \caption{Relação entre transação}
+    \label{fig:Relacao_inpout_transacao}
+\end{figure}
+
+Pode parecer estranha a necessidade de dois \textit{outputs}, mas como um UTXO é indivisível é necessário gerar um troco na transação, e esse segundo output é uma transação de volta para a carteira do usuário com o valor do troco que de ser gerado. Por exemplo,um usuário possui 3 UTXOs de Bitcoin e deseja fazer uma transação de 1 Bitcoin, essa transação precisará consumir todos os 3 UTXOs e irá produzir 2 outpus: uma para o destinatário da transação no valor de 1\bitcoinA{} e outro no valor de 2\bitcoinA{} menos a taxa do minerador como troco de volta para o usuário.
+
+A taxa de transação é paga ao minerador que processou a transação em um bloco como recompensa pelo seu processamento e gasto de energia é são calculadas de acordo com o tamanho da transação em kilobytes, e também servem como desestimuladoras de transações \textit{spam}. As taxas de transação afetam a prioridade do processamento de uma transação, significando uma uma transação com uma taxa alta podem ser incluídas na blockchain mais rapidamente do que uma transação de com uma taxa muito baixa. Um taxa de transação não é obrigatória em uma transação, e as transações sem taxa podem ser processadas.
+
+O valar dessa taxa é calculado através da subtração da soma de todos os \textit{inputs} com a soma de todos os \textit{outputs} ($\sum_{i=0}^{N} \textit{inputs} - \sum_{i=0}^{K} \textit{outputs}$), o valor dessa operação será o valor da taxa. As taxas dadas ao minerador são transferidas para ele através de uma transação criado por ele é inserida no bloco que foi minerado.
+
+
+\subsection*{Transação coinbase}
+
+A única exceção para essa regra de cadeia de \textit{inputs} e \textit{output} é para um tipo especial de transação chamada \textit{coinbase}. Essa transação é inserida no bloco minerado pelo minerador "vencedor" e tem a finalidade de inserir novos bitcoins na rede, que serão transferidos para o minerador como recompensa por ter minerado o bloco. Como essa novas moedas acabaram de ser criadas essa transação não possui um \textit{input}. A estrutura de uma transação coinbase a apresentada na Figura \ref{fig:Estrutura_coinbase}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[keepaspectratio=true, scale=0.6]{img/Estrutura_coinbase.pdf}
+    \caption{Estrutura de uma transação coinbase \cite{DevBitKO}}
+    \label{fig:Estrutura_coinbase}
+\end{figure}
+
+A única alteração na transação coinbase são os campos \textit{coinbaseLen}, que armazena o tamanho do segundo campo que é o \textit{coinbase}. O campo \textit{coinbase} funciona como um script de travamanto, por isso é também conhecido por coinbase script. Ele armazena a altura que o blockchain deve ter, a partir do bloco que possui a transação coinbase, para que se possa gastar essas novas moedas. A estrutura do campo \textit{coinbase} é apresentada na Figura \ref{fig:Estrutura_coinbase}. 
  
+\begin{figure}[H]
+    \centering
+    \includegraphics[keepaspectratio=true, scale=0.6]{img/Estrutura_campo_coinbase.pdf}
+    \caption{Estrutura do campo coinbase \cite{DevBitKO}}
+    \label{fig:Estrutura_campo_coinbase}
+\end{figure}
+
+O primeiro campo \textit{blockHeightLen} armazena o tamanho do \textit{blockHeight} que possui a altura do bloco. O dados do campo \textit{arbitraryData} devem ser aleatórios e podem ser utilizados no algoritmo de prova-de-trabalho.
 
 
 \subsection{Validando transações}
+\label{section:Validando transações}
+As transações Bitcoin são validadas através de uma linguagem script. São utilizados dois tipos de scripts para a validação: um script de travamento e um de destravamento.
 
-As transações Bitcoin são validadas através de uma linguagem script, são utilizados dois tipos de scripts para a validação: um script de travamento e um de destravamento.
+Um script de travamento é uma imposição inserida em um output especificando as condições necessárias para se gastar um UTXO no futuro. O script de travamento é conhecido como \textit{scriptPubKey} pois ele continha uma chave publica ou endereço Bitcoin, porém atualmente utiliza-se uma gama muito maior de possibilidades de script.
 
-Um script de travamento é uma imposição inserida em um output especificando as condições necessárias para se gastar um UTXO no futuro. O script de travamento é conhecido como \textit{scriptPubKey} pois ele geralmente continha uma chave publica ou endereço Bitcoin, porém atualmente utiliza-se uma gama muito maior de possibilidades de script.
-
+%%REVER!!!!!!!!!!!!!! Existem mais que as citadas!!!!!!!!!!!!!!!!!!
 Um script de destravamento satisfaz as condições que forem colocas em um UTXO por um script de travamento, permitindo que o UTXO seja gasto. Eles fazem parte de todos os inputs de transação e na maioria das vezes contém uma assinatura digital produzida por uma carteira a partir de sua chave primaria, por isso é conhecido como \textit{scriptSig}, mas nem todos os scripts de destravamento contém uma assinatura digital.
 
-\subsubsection{Linguagem Script}  
-
+\subsection*{Linguagem Script}  
+\label{section:Linguagem Script}
 A linguagem script das transações Bitcoin utiliza a notação polonesa invertida, baseada em pilha(\textit{stack}). Uma pilha possui apenas duas operações, empilhar(push) e desempilhar(pop). A operação push insere um item no topo da pilha enquanto a operação pop retira um item do topo da pilha.
 
 Ela não é uma linguagem Turing Completa, o que significa que não se pode criar loops ou algo que de alguma maneira poderia criar um ataque de negação de serviço na rede. Outra forte característica é que ela não exige um monitoramento de estado, ou seja, não existe um estado salvo após a execução do script, toda a informação necessária para executar o script está contida no script. Isso significa que uma transação valida será valida para toda a rede.
@@ -531,7 +582,7 @@ Atualmente existem cinco tipos padrões de scripts de transação: \textit{pay-t
 \subsection*{Pay-to-Public-Key-Hash}
 O script de transação Pay-to-Public-Key-Hash(P2PKH) utiliza um script de travamento que disponibiliza um \textit{output} para um endereço Bitcoin, que é o hash da chave pública da carteira. Esse \textit{output} pode ser destravado ao se apresentar a chave pública e a assinatura digital criada pela chave privada correspondente.
 
-Para melhor entender o funcionamento desse script vamos supor que Bob deseja fazer uma transacão de uma quantia de bitcoins que existe em sua carteira para a carteira de um café de sua cidade. O script de travamento do UTXO que será inserido no \textit{input} dessa transação possui a seguinte forma.
+Para melhor entender o funcionamento desse script vamos supor que Bob deseja fazer uma transação de uma quantia de bitcoins que existe em sua carteira para a carteira de um café de sua cidade. O script de travamento do UTXO que será inserido no \textit{input} dessa transação possui a seguinte forma.
 
 
 \begin{figure}[H]
@@ -559,7 +610,7 @@ Ao juntarmos os scripts de travamento e destravamento temos o seguinte script de
     \label{fig:P2PKH_Validacao}
 \end{figure}
 
-Esse script de validacao será executado na seguinte forma.
+Esse script de validação será executado na seguinte forma.
 
 
 \begin{enumerate}
@@ -603,11 +654,11 @@ Ao juntarmos os scripts de travamento e destravamento temos o seguinte script de
     \label{fig:P2PK_Validacao}
 \end{figure}
 
-Esse script é bem mais simples que o P2PKH, porém o seu script de travamento ocupa muito mais espaço, já que a chave pública é maior que seu hash, o que dificulta seu uso. O script P2PK é mais utilizado hoje por softwares de mineração mais antigos que não foram atualizados para utilizarem o P2PHK.
+Esse script é bem mais simples que o P2PKH, porém o seu script de travamento ocupa muito mais espaço já que a chave pública é maior que seu hash, o que dificulta seu uso. O script P2PK é mais utilizado hoje por softwares de mineração mais antigos que não foram atualizados para utilizarem o P2PHK.
 
 \subsection*{Multi-signature}
 \label{sec:Multi-signature}
-Esse scrip de transação define uma condição onde N chaves públicas são registradas no script e pelo menos M dessas chaves devem ser fornecidas para a liberação de tal UTXO. Essa condição é conhecida como um esquema M-de-N, onde N é o número total de chaves e M é o número de assinaturas necessárias para a liberação do UTXO.
+Esse script de transação define uma condição onde N chaves públicas são registradas no script e pelo menos M dessas chaves devem ser fornecidas para a liberação de tal UTXO. Essa condição é conhecida como um esquema M-de-N, onde N é o número total de chaves e M é o número de assinaturas necessárias para a liberação do UTXO.
 
 O script de travamento de um script Multi-signature é da seguinte forma.
 
@@ -671,7 +722,7 @@ Script de destravamento & Ass1 ... Assn                                         
 
 \subsection*{Data Recording Output (OP\_RETURN)}
 
-Todas as transacões da rede Bitcoin são armazenas em um "banco de dados" distribuído chamado Blockchain, o funcionamento desse sistema será explicado mais adiante. Esse sistema potencial muito mais amplo do que apenas pagamentos, muitos desenvolvedores tentaram utilizar da segurança e resiliência da Blockchain para aplicações como cartórios digitais, certificados de ações e contratos \textit{smart}. As primeiras tentativos surgiram ao tentar criar \textit{outputs} de transação que registravam dados na Blockchain.
+Todas as transações da rede Bitcoin são armazenas em um "banco de dados" distribuído chamado Blockchain, o funcionamento desse sistema será explicado mais adiante. Esse sistema potencial muito mais amplo do que apenas pagamentos, muitos desenvolvedores tentaram utilizar da segurança e resiliência da Blockchain para aplicações como cartórios digitais, certificados de ações e contratos \textit{smart}. As primeiras tentativos surgiram ao tentar criar \textit{outputs} de transação que registravam dados na Blockchain.
 
 Quando a ideia de utilizar a Blockchain do Bitcoin  consideram esse uso abusivo, enquanto outros acreditaram que isso mostrava a enorme capacidade dessa tecnologia. Os que eram contra argumentavam que isso causaria um "inchaço na blockchain", trazendo uma carga par os nós que armazenam a Blockchain em disco. Além disso, esse processo criaria  falsas transações já que utilizam o campo de endereço do destinatário para armazenar dados, fazendo com que o UTXO jamais seja gasto. Essas transações que não podem ser gastas jamais seriam removidas do \textit{pool} UTXO fazendo-o crescer infinitamente. 
 
@@ -679,23 +730,62 @@ Quando a ideia de utilizar a Blockchain do Bitcoin  consideram esse uso abusivo,
 Para resolver esse problema na versão BitcoinCore 0.9.0 foi introduzido o operador OP\_return, esse operador permitia que fosse adicionado 40 bytes de não-pagamento em um \textit{output} de transação, na versão BitconCore 0.12.0 esse limite foi aumentado para 83 bytes. Esse operador cria \textit{outputs} que são comprovadamente não gastáveis que não precisam ser registrados no \textit{pool} UTXO.
 
 
-%Após criar uma transação ela precisa ser enviadas para mais de um nó da rede para garantir sua propagação, ao chegar ao nó a transação será propagada através de um processo de \textit{flooding}. Como as transações não possuem informações confidenciais elas podem ser transmitidas publicamente utilizando um canal inseguro.
-
-%Ao utilizar o sistema de \textit{flooding} para a propagação das transações a rede fica suscetível a spam, ataques DOS e outros ataques maliciosos. Para prevenir isso as transações só são propagadas para outros nós se forem válidas. Se a transação for válida o nó a propaga para os nós que ele está conectado e uma mensagem de sucesso é enviada para quem originou a transação. Quando a transação for inválida uma mensagem de rejeição será enviada para quem originou a mensagem e a transação não será propagada para outros nós.
-
 \subsection{Blockchain}
-O Blockchain funciona como uma de registros distribuido e compartilhado. No Boitcoin o Blockchain funciona como um livro-razão onde são armazenadas todas as transações já feitas.
+A blockchain funciona como uma de registros distribuído e compartilhado. No bitcoin a blockchain funciona como um livro-razão onde são armazenadas todas as transações já feitas. Seu principal proposito é garantir uma ordem cronológica das transações e prevenir o problema de gasto duplo (double spending), apresentado por Hal Finney em seu whitepaper intitulado Digital Cash \& Privacy. 
 
-Podemos abstrair o Blockchain como um empilhamento de blocos de dados, com cada  novo bloco gerado sendo empilhado sobre o bloco mais recente do Blockchain. Essa visualização de blocos empilhados possibilita a utilização de termos como "altura", para se referir a posição de um bloco em relação ao primeiro bloco do Blockchain (Bloco gênese), e "topo", para se referir ao bloco mais recente do Blockchain. 
+A estrutura da blockchain é vista como um estrutura ordenada de blocos de dados com cada bloco sendo identificado pelo seu hash (SHA256). Cada bloco contém uma referência ao bloco anterior (bloco pai) em seu cabeçalho, essa referência corresponde ao identificador do bloco anterior. Isso empoe uma ordem cronológica nos blocos e por consequência nas transações, já que não é possível criar o hash de um bloco que ainda não existe na blockchain. O único bloco que não possui a referência para seu bloco pai é o bloco gênese, pelo fato de ser o primeiro bloco da blockchain. 
 
-Esse abstração de empilhamento de blocos é feita porque cada bloco possui a referência para o bloco anterior a ele, chamado de bloco pai. Esse referência é através de um campo no cabeçalho dos blocos que possui o identificador do bloco pai, esse identificar corresponde ao hash SHA256 do bloco.  O único bloco que não possui a referência para seu bloco pai é o bloco gênese, pelo fato de ser o primeiro bloco do Blockchain.
+O bloco gênese é o ancestral comum de todos os blocos do blockchain. Todo nó começa com o bloco gênese em sua blockchain porque ele está estaticamente codificado no cliente bitcoin, de modo que ele não pode ser alterado sem recompilar o código-fonte. Como o nó conhece todos os dados da estrutura do bloco gênese, ele contém um ponto de partida da blockchain seguro, a partir do qual pode montar uma blockchain de confiança. 
 
-Como cada bloco possui a o hash de seu bloco pai em seu cabeçalho isso irá influenciar no seu hash, assim, se ocorrer uma mudança em um bloco isso afetará seu hash que também afetará os blocos acima causando um efeito dominó. Esse efeito dominó garante a  que um bloco que tenha algumas gerações o sucedendo não possa ser alterando, a não ser que haja um calculo forçado do hash de todos os blocos subsequentes. Essa é uma das características chave para a segurança do Blockchain, pois a mudança de um bloco que já possui uma certa profundidade exigira um processo computacional enorme.
+Devido cronologia existente entre os blocos podemos abstrair a blockchain como um empilhamento de blocos de dados, com cada  novo bloco gerado sendo empilhado sobre o bloco mais recente da blockchain. Essa visualização de blocos empilhados possibilita a utilização de termos como "altura", para se referir a posição de um bloco em relação ao primeiro bloco do Blockchain (Bloco gênese), e "topo", para se referir ao bloco mais recente da blockchain. 
+
+Como cada bloco possui a o hash de seu bloco pai em seu cabeçalho isso irá influenciar no seu hash, assim, se ocorrer uma mudança em um bloco isso afetará seu hash que também afetará os blocos acima causando um efeito dominó. Esse efeito dominó garante a  que um bloco que tenha algumas gerações o sucedendo não possa ser alterando, a não ser que haja um calculo forçado do hash de todos os blocos subsequentes. Essa é uma das características chave para a segurança da blockchain, pois a mudança de um bloco que já possui uma certa profundidade exigira um processo computacional enorme.
+
+Os blocos também possuem a solução para o algoritmo de prova de trabalho. O trabalho computacional envolvido na solução do problema de prova de trabalho é utilizado como um esquema de votação entre os nós da rede para que eles concordem com a versão da blockchain. No geral, os nós concordam a versão da blockchain que envolva o maior poder computacional utilizado para ser criado.
+
+Como os nós mineradores da rede competem na solução de prova de trabalho para incluir um bloco na blockchain, existe a possibilidade de dois blocos serem minerados ao mesmo tempo, causando um bifurcação na blockchain visto pela rede. Nesse caso os nós irão aceitar o bloco que receberem primeiro e continuar a construir a blockchain a partir daquele bloco. Assim que um novo bloco for adicionado a uma das bifurcações, aquela com maior altura será considerada a blockchain válida e as transações do bloco descartado serão adicionadas ao pool de transações.
 
 
 
 \subsection*{Estrutura de um bloco}
+Cada bloco no blockchain do Bitcoin é composto por um cabeçalho e um payload e sua estrutura é apresentada na Tabela \ref{table:estrutura_bloco}. O cabeçalho corresponde aos 6 primeiros campos e o payload aos dois últimos.
 
+\begin{table}[H]
+\centering
+\caption{Estrutura de um bloco \cite{DevBitKO}}
+\label{table:estrutura_bloco}
+\begin{tabular}{|l|c|}
+\hline
+\multicolumn{1}{|c|}{\textbf{Campo}} & \textbf{Tamanho}                                                 \\ \hline
+\textit{nVersion}                             & \begin{tabular}[c]{@{}c@{}}int\\ (4 bytes)\end{tabular}          \\ \hline
+\textit{HashPrevBlock}                        & \begin{tabular}[c]{@{}c@{}}uint256\\ (32 bytes)\end{tabular}     \\ \hline
+\textit{HashMerkleRoot}                       & \begin{tabular}[c]{@{}c@{}}uint256\\ (32 bytes)\end{tabular}     \\ \hline
+\textit{nTime}                                & \begin{tabular}[c]{@{}c@{}}unsigned int\\ (4 bytes)\end{tabular} \\ \hline
+\textit{nBits}                                & \begin{tabular}[c]{@{}c@{}}unsigned int\\ (4 bytes)\end{tabular} \\ \hline
+\textit{nNonce}                               & \begin{tabular}[c]{@{}c@{}}unsigned int\\ (4 bytes)\end{tabular} \\ \hline
+\textit{\#vtx}                                & \begin{tabular}[c]{@{}c@{}}VarInt\\ (1-9 bytes)\end{tabular}     \\ \hline
+\textit{vtx}{[}{]}                            & Variable                                                         \\ \hline
+\end{tabular}
+\end{table}
+
+O campo \textit{nVersion} armazena o número de versão como referências as atualizações de software/protocolo. O segundo campo \textit{HashPrevBlock} corresponde ao duplo hash dos dados concatenados do cabeçalho bloco anterior (bloco pai), que é o identificador primário do bloco, como apresentado na Figura \ref{fig:Ref_blocos}. Essa ligação entre os blocos é uma das características chaves que garante a segurança e resiliência do Blockchain e foi explicada do início dessa seção. O \textit{HashMerkleRoot} armazena o hash da raiz da árvore de Merkle das transações desse bloco. Os campos \textit{nTime} e \textit{nBits} correspondem ao tempo aproximado no formato UNIX em que o bloco foi criado e a dificuldade do algoritmo de prova-de-trabalho do bloco. O \textit{nNonce} é uma sequência de bit aleatória e é utilizado como fonte de aleatoriedade para o algoritmo de prova-de-trabalho. Entretanto como o \textit{nNonce} possui um tamanho muito pequeno ele não prove uma variância significante, devido a isso existem outras fontes que serão apresentadas com mais detalhes na seção \ref{}.
+
+No payload temos os campos \textit{\#vtx} que armazena a quantidade de transações que o campo \textit{vtx}[] possui. O campo \textit{vtx}[] funciona como um vetor de transações. A estrutura de uma transações foi apresentada na seção \ref{section:Transações na rede Bitcoin}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[keepaspectratio=true, scale=0.6]{img/Referencia_entre_blocos.pdf}
+    \caption{Referência entre blocos}
+    \label{fig:Ref_blocos}
+\end{figure}
+
+Perceba que o não está incluído na estrutura de dados do bloco, nem quando o bloco é transmitido na rede e nem quando ele é armazenado na blockchain. O hash deve ser calculado por cada nó assim que o bloco é recebido, e pode ser armazenado em uma tabela separada como parte dos metadados do bloco para facilitar a indexação e uma coleta mais rápida dos blocos em disco. 
+
+\subsection*{Árvode de Merkle}
+
+\subsection*{Filtros Bloom}
+ 
+   
 \section{Conclusion}
 The conclusion goes here.
 

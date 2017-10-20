@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Arch Linux) (preloaded format=pdflatex 2017.8.16)  26 SEP 2017 14:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Arch Linux) (preloaded format=pdflatex 2017.8.16)  18 OCT 2017 04:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -993,127 +993,190 @@ LaTeX Font Info:    Calculating math sizes for size <10.03749> on input line 42
 
 
 ] [2]
-Underfull \hbox (badness 2229) in paragraph at lines 529--530
+
+pdfTeX warning: pdflatex (file ./img/Estrutura_transacao.pdf): PDF inclusion: f
+ound PDF version <1.7>, but at most version <1.5> allowed
+<img/Estrutura_transacao.pdf, id=17, pagebox=cropbox, 183.5939pt x 357.26372pt>
+
+File: img/Estrutura_transacao.pdf Graphic file (type pdf)
+<use img/Estrutura_transacao.pdf>
+Package pdftex.def Info: img/Estrutura_transacao.pdf  used on input line 509. o
+n input line 509.
+Package pdftex.def Info: Requested size: 128.51485pt x 250.08289pt on input lin
+e 509.
+
+
+pdfTeX warning: pdflatex (file ./img/Relacao_inpout_transacao.pdf): PDF inclusi
+on: found PDF version <1.7>, but at most version <1.5> allowed
+<img/Relacao_inpout_transacao.pdf, id=18, pagebox=cropbox, 368.18051pt x 238.17
+581pt>
+File: img/Relacao_inpout_transacao.pdf Graphic file (type pdf)
+<use img/Relacao_inpout_transacao.pdf>
+Package pdftex.def Info: img/Relacao_inpout_transacao.pdf  used on input line 5
+28. on input line 528.
+Package pdftex.def Info: Requested size: 220.91pt x 142.90657pt on input line 5
+28.
+[3 <./img/Estrutura_transacao.pdf> <./img/Relacao_inpout_transacao.pdf>]
+
+pdfTeX warning: pdflatex (file ./img/Estrutura_coinbase.pdf): PDF inclusion: fo
+und PDF version <1.7>, but at most version <1.5> allowed
+<img/Estrutura_coinbase.pdf, id=41, pagebox=cropbox, 184.58662pt x 357.26372pt>
+
+File: img/Estrutura_coinbase.pdf Graphic file (type pdf)
+<use img/Estrutura_coinbase.pdf>
+Package pdftex.def Info: img/Estrutura_coinbase.pdf  used on input line 546. on
+ input line 546.
+Package pdftex.def Info: Requested size: 110.75282pt x 214.35988pt on input lin
+e 546.
+
+
+pdfTeX warning: pdflatex (file ./img/Estrutura_campo_coinbase.pdf): PDF inclusi
+on: found PDF version <1.7>, but at most version <1.5> allowed
+<img/Estrutura_campo_coinbase.pdf, id=42, pagebox=cropbox, 221.3048pt x 113.133
+67pt>
+File: img/Estrutura_campo_coinbase.pdf Graphic file (type pdf)
+<use img/Estrutura_campo_coinbase.pdf>
+Package pdftex.def Info: img/Estrutura_campo_coinbase.pdf  used on input line 5
+55. on input line 555.
+Package pdftex.def Info: Requested size: 132.78389pt x 67.8807pt on input line 
+555.
+
+Underfull \hbox (badness 2229) in paragraph at lines 580--581
 \T1/ptm/m/it/10.03749 Key\T1/ptm/m/n/10.03749 (P2PK), \T1/ptm/m/it/10.03749 mul
 ti-signature\T1/ptm/m/n/10.03749 , \T1/ptm/m/it/10.03749 Pay-to-script-hash\T1/
 ptm/m/n/10.03749 (P2SH) e
  []
 
-
+[4 <./img/Estrutura_coinbase.pdf> <./img/Estrutura_campo_coinbase.pdf>]
 
 pdfTeX warning: pdflatex (file ./img/P2PHKH_script_travamento.pdf): PDF inclusi
 on: found PDF version <1.7>, but at most version <1.5> allowed
-<img/P2PHKH_script_travamento.pdf, id=17, pagebox=cropbox, 337.41557pt x 29.772
+<img/P2PHKH_script_travamento.pdf, id=62, pagebox=cropbox, 337.41557pt x 29.772
 23pt>
 File: img/P2PHKH_script_travamento.pdf Graphic file (type pdf)
 <use img/P2PHKH_script_travamento.pdf>
 Package pdftex.def Info: img/P2PHKH_script_travamento.pdf  used on input line 5
-39. on input line 539.
+90. on input line 590.
 Package pdftex.def Info: Requested size: 236.18929pt x 20.8404pt on input line 
-539.
+590.
 
 
 pdfTeX warning: pdflatex (file ./img/P2PHKH_script_destravamento.pdf): PDF incl
 usion: found PDF version <1.7>, but at most version <1.5> allowed
-<img/P2PHKH_script_destravamento.pdf, id=18, pagebox=cropbox, 150.84456pt x 29.
+<img/P2PHKH_script_destravamento.pdf, id=63, pagebox=cropbox, 150.84456pt x 29.
 77223pt>
 File: img/P2PHKH_script_destravamento.pdf Graphic file (type pdf)
 <use img/P2PHKH_script_destravamento.pdf>
 Package pdftex.def Info: img/P2PHKH_script_destravamento.pdf  used on input lin
-e 548. on input line 548.
+e 599. on input line 599.
 Package pdftex.def Info: Requested size: 120.6758pt x 23.8178pt on input line 5
-48.
+99.
 
 
 pdfTeX warning: pdflatex (file ./img/P2PHKH_script_validacao.pdf): PDF inclusio
 n: found PDF version <1.7>, but at most version <1.5> allowed
-<img/P2PHKH_script_validacao.pdf, id=19, pagebox=cropbox, 479.32877pt x 30.7639
+<img/P2PHKH_script_validacao.pdf, id=64, pagebox=cropbox, 479.32877pt x 30.7639
 3pt>
 File: img/P2PHKH_script_validacao.pdf Graphic file (type pdf)
 <use img/P2PHKH_script_validacao.pdf>
-Package pdftex.def Info: img/P2PHKH_script_validacao.pdf  used on input line 55
-7. on input line 557.
+Package pdftex.def Info: img/P2PHKH_script_validacao.pdf  used on input line 60
+8. on input line 608.
 Package pdftex.def Info: Requested size: 225.28455pt x 14.45903pt on input line
- 557.
-[3 <./img/P2PHKH_script_travamento.pdf> <./img/P2PHKH_script_destravamento.pdf>
-]
+ 608.
+
 
 pdfTeX warning: pdflatex (file ./img/P2PK_script_travamento.pdf): PDF inclusion
 : found PDF version <1.7>, but at most version <1.5> allowed
-<img/P2PK_script_travamento.pdf, id=37, pagebox=cropbox, 147.86743pt x 29.77223
+<img/P2PK_script_travamento.pdf, id=65, pagebox=cropbox, 147.86743pt x 29.77223
 pt>
 File: img/P2PK_script_travamento.pdf Graphic file (type pdf)
 <use img/P2PK_script_travamento.pdf>
-Package pdftex.def Info: img/P2PK_script_travamento.pdf  used on input line 582
-. on input line 582.
-Package pdftex.def Info: Requested size: 118.2941pt x 23.8178pt on input line 5
-82.
+Package pdftex.def Info: img/P2PK_script_travamento.pdf  used on input line 633
+. on input line 633.
+Package pdftex.def Info: Requested size: 118.2941pt x 23.8178pt on input line 6
+33.
 
 
 pdfTeX warning: pdflatex (file ./img/P2PK_script_destravamento.pdf): PDF inclus
 ion: found PDF version <1.7>, but at most version <1.5> allowed
-<img/P2PK_script_destravamento.pdf, id=38, pagebox=cropbox, 75.42278pt x 30.763
+<img/P2PK_script_destravamento.pdf, id=66, pagebox=cropbox, 75.42278pt x 30.763
 93pt>
 File: img/P2PK_script_destravamento.pdf Graphic file (type pdf)
 <use img/P2PK_script_destravamento.pdf>
 Package pdftex.def Info: img/P2PK_script_destravamento.pdf  used on input line 
-592. on input line 592.
+643. on input line 643.
 Package pdftex.def Info: Requested size: 60.33829pt x 24.61116pt on input line 
-592.
+643.
 
 
 pdfTeX warning: pdflatex (file ./img/P2PK_script_validacao.pdf): PDF inclusion:
  found PDF version <1.7>, but at most version <1.5> allowed
-<img/P2PK_script_validacao.pdf, id=39, pagebox=cropbox, 219.32039pt x 29.77223p
+<img/P2PK_script_validacao.pdf, id=67, pagebox=cropbox, 219.32039pt x 29.77223p
 t>
 File: img/P2PK_script_validacao.pdf Graphic file (type pdf)
 <use img/P2PK_script_validacao.pdf>
-Package pdftex.def Info: img/P2PK_script_validacao.pdf  used on input line 601.
- on input line 601.
+Package pdftex.def Info: img/P2PK_script_validacao.pdf  used on input line 652.
+ on input line 652.
 Package pdftex.def Info: Requested size: 175.45653pt x 23.8178pt on input line 
-601.
+652.
 
 
 pdfTeX warning: pdflatex (file ./img/Multsig_script_travamento.pdf): PDF inclus
 ion: found PDF version <1.7>, but at most version <1.5> allowed
-<img/Multsig_script_travamento.pdf, id=40, pagebox=cropbox, 318.56013pt x 29.77
+<img/Multsig_script_travamento.pdf, id=68, pagebox=cropbox, 318.56013pt x 29.77
 223pt>
 File: img/Multsig_script_travamento.pdf Graphic file (type pdf)
 <use img/Multsig_script_travamento.pdf>
 Package pdftex.def Info: img/Multsig_script_travamento.pdf  used on input line 
-616. on input line 616.
+667. on input line 667.
 Package pdftex.def Info: Requested size: 238.9195pt x 22.3291pt on input line 6
-16.
-
+67.
+[5 <./img/P2PHKH_script_travamento.pdf> <./img/P2PHKH_script_destravamento.pdf>
+ <./img/P2PHKH_script_validacao.pdf> <./img/P2PK_script_travamento.pdf> <./img/
+P2PK_script_destravamento.pdf> <./img/P2PK_script_validacao.pdf> <./img/Multsig
+_script_travamento.pdf>]
 
 pdfTeX warning: pdflatex (file ./img/Multsig_script_destravamento.pdf): PDF inc
 lusion: found PDF version <1.7>, but at most version <1.5> allowed
-<img/Multsig_script_destravamento.pdf, id=41, pagebox=cropbox, 211.38072pt x 31
-.75664pt>
+<img/Multsig_script_destravamento.pdf, id=121, pagebox=cropbox, 211.38072pt x 3
+1.75664pt>
 File: img/Multsig_script_destravamento.pdf Graphic file (type pdf)
 <use img/Multsig_script_destravamento.pdf>
 Package pdftex.def Info: img/Multsig_script_destravamento.pdf  used on input li
-ne 625. on input line 625.
+ne 676. on input line 676.
 Package pdftex.def Info: Requested size: 158.53514pt x 23.8174pt on input line 
-625.
+676.
 
 
 pdfTeX warning: pdflatex (file ./img/Multsig_script_validacao.pdf): PDF inclusi
 on: found PDF version <1.7>, but at most version <1.5> allowed
-<img/Multsig_script_validacao.pdf, id=42, pagebox=cropbox, 527.95645pt x 30.763
-93pt>
+<img/Multsig_script_validacao.pdf, id=122, pagebox=cropbox, 527.95645pt x 30.76
+393pt>
 File: img/Multsig_script_validacao.pdf Graphic file (type pdf)
 <use img/Multsig_script_validacao.pdf>
 Package pdftex.def Info: img/Multsig_script_validacao.pdf  used on input line 6
-34. on input line 634.
+85. on input line 685.
 Package pdftex.def Info: Requested size: 237.5782pt x 13.84363pt on input line 
-634.
-[4 <./img/P2PHKH_script_validacao.pdf> <./img/P2PK_script_travamento.pdf> <./im
-g/P2PK_script_destravamento.pdf> <./img/P2PK_script_validacao.pdf> <./img/Mults
-ig_script_travamento.pdf> <./img/Multsig_script_destravamento.pdf> <./img/Mults
-ig_script_validacao.pdf>]
-LaTeX Font Info:    Calculating math sizes for size <8.03> on input line 653.
- (./bare_conf_compsoc.bbl [5])
+685.
+LaTeX Font Info:    Calculating math sizes for size <8.03> on input line 704.
+[6 <./img/Multsig_script_destravamento.pdf> <./img/Multsig_script_validacao.pdf
+>]
+
+LaTeX Warning: Reference `' on page 7 undefined on input line 771.
+
+
+
+pdfTeX warning: pdflatex (file ./img/Referencia_entre_blocos.pdf): PDF inclusio
+n: found PDF version <1.7>, but at most version <1.5> allowed
+<img/Referencia_entre_blocos.pdf, id=140, pagebox=cropbox, 294.74214pt x 188.55
+544pt>
+File: img/Referencia_entre_blocos.pdf Graphic file (type pdf)
+<use img/Referencia_entre_blocos.pdf>
+Package pdftex.def Info: img/Referencia_entre_blocos.pdf  used on input line 77
+7. on input line 777.
+Package pdftex.def Info: Requested size: 176.84665pt x 113.13412pt on input lin
+e 777.
+[7 <./img/Referencia_entre_blocos.pdf>] (./bare_conf_compsoc.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -1125,26 +1188,34 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[6
+[8
 
-] (./bare_conf_compsoc.aux) ) 
+] (./bare_conf_compsoc.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 14523 strings out of 492990
- 273446 string characters out of 6138688
- 331041 words of memory out of 5000000
- 17762 multiletter control sequences out of 15000+600000
- 118918 words of font info for 123 fonts, out of 8000000 for 9000
+ 14562 strings out of 492990
+ 274670 string characters out of 6138688
+ 332134 words of memory out of 5000000
+ 17795 multiletter control sequences out of 15000+600000
+ 121737 words of font info for 125 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 54i,14n,73p,1078b,269s stack positions out of 5000i,500n,10000p,200000b,80000s
- </usr/share/texmf-dist/fonts/pk/ljfour/public/cm/
-dpi600/cmsy7.pk>{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/
-texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/
-urw/times/utmbi8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><
-/usr/share/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on bare_conf_compsoc.pdf (6 pages, 134026 bytes).
+ 54i,14n,73p,1227b,269s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/s
+hare/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/u
+rw/times/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></
+usr/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fo
+nts/type1/urw/times/utmri8a.pfb>
+Output written on bare_conf_compsoc.pdf (8 pages, 232538 bytes).
 PDF statistics:
- 120 PDF objects out of 1000 (max. 8388607)
- 88 compressed objects within 1 object stream
+ 192 PDF objects out of 1000 (max. 8388607)
+ 142 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 58 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 83 words of extra memory for PDF output out of 10000 (max. 10000000)
 
