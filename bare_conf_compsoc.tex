@@ -434,7 +434,7 @@ I wish you the best of success.
 
 \section{O Bitcoin}
 
-A proposta do Bitcoin(\bitcoinA) surgiu em meados de 2008 em um artigo intitulado "Bitcoin: A Peer-to-Peer Electronic Cash System" escrito por um autor sob o pseudônimo de Satoshi Nakamoto. Ele utilizou varias propostas apresentadas no b-money, Hashcash e Bitgold para criar uma moeda digital \textit{peer-to-peer}(P2P) que não depende de uma autoridade central, ou seja, para efetuar uma transação não é necessário a existência de uma autoridade central confiável para validá-la \cite{Nakamoto2008}.
+A proposta do Bitcoin (\bitcoinA) surgiu em meados de 2008 em um artigo intitulado "Bitcoin: A Peer-to-Peer Electronic Cash System" escrito por um autor sob o pseudônimo de Satoshi Nakamoto. Ele utilizou varias propostas apresentadas no b-money, Hashcash e Bitgold para criar uma moeda digital \textit{peer-to-peer} (P2P) que não depende de uma autoridade central, ou seja, para efetuar uma transação não é necessário a existência de uma autoridade central confiável para validá-la \cite{Nakamoto2008}.
 
 %%O conteudo desse parágrafo é importante, porem não sei se aqui é o melhor lugar para isso
 A grande inovação proposta por Nakamoto em seu artigo foi utilizar o conceito de prova de trabalho (\textit{proof-of-work}) para criar um consenso  distribuído confiável e resolver o problema de \textit{Double Spending}. Tal solução pode ser utilizada para alcançar um consenso em redes decentralizadas para provar a honestidade de eleições, registros, contratos e muito mais.
@@ -447,7 +447,7 @@ Atualmente exitem vários tipos de carteiras Bitcoin com diferentes níveis de s
 As carteiras também são classificadas de acordo com a sua autonomia e o tipo de interação com a rede Bitcoin:
 
 \begin{itemize}
-\item \textit{Full node}: armazena todo o histórico de transação da rede bitcoin (Blockchain), gerencia a carteira do usuário localmente e pode iniciar uma transação diretamente com a rede Bitcoin. Ele consegue validar a blockchain oferecendo completa autonomia e uma validação de transações independente, porém ele consome uma grande quantidade de espaço em disco.
+\item \textit{Full node}: armazena todo o histórico de transação da rede bitcoin (Blockchain), gerencia a carteira do usuário localmente e pode iniciar uma transação diretamente com a rede Bitcoin. Ele consegue validar o blockchain oferecendo completa autonomia e uma validação de transações independente, porém ele consome uma grande quantidade de espaço em disco.
 \item \textit{Lightweight Client}: se conecta a um full node para ter acesso as transações da rede Bitcoin. Gerencia a carteira do usuário localmente, cria, valida e transmite as transações.
 \item \textit{Third-party API client}: o usuário ira interagir com a rede Bitcoin através de uma API fornecida por um servidor. A carteira poderá ser armazenada com o próprio usuário ou no servidor, porém as transações são sempre gerenciadas pelo servidor.
 \end{itemize}
@@ -462,6 +462,7 @@ Para conseguir alcançar tal objetivo a rede Bitcoin utiliza uma arquitetura cha
 O termo rede Bitcoin refere-se ao nós que participam da rede P2P Bitcoin. Porém, além do protocolo P2P a rede Bitcoin utiliza outros protocolos como o Stratum, que é utilizado por pools de mineração e carteiras leves ou móveis, essas redes que utilizam um protocolo diferente do P2P Bitcoin são chamadas de redes Bitcoin estendidas. Essa redes estendidas comunicam-se com a rede Bitcoin através de servidores de roteamento de gateway que podem comunicar-se tanto com o protocolo P2P Bitcoin quanto o protocolo da rede estendida.
 
 \subsection*{Tipos de nós}
+\label{section:Tipos de nós}
 Existem quatro funcionalidades que um nó pode ter na rede: carteira, minerador, blockchain completo e roteamento. Além dessas quatro funcionalidades existe um funcionalidade para os nós da rede estendida que é de e roteamento pool, esse funcionalidade é responsável pela comunicam do nó com os servidores de roteamento de gateway (Servidores Pool) que se comunicam com a rede Bitcoin. Embora os nós em uma rede P2P sejam iguais hierarquicamente isso não significa que eles necessitam possuir as mesmas funcionalidades. Todos os nós da rede Bitcoin devem possuem a funcionalidade de roteamento e podem incluir outras funcionalidades. Os nós da rede Bitcoin são classificados da seguinte forma:
 
 \begin{itemize}
@@ -469,13 +470,15 @@ Existem quatro funcionalidades que um nó pode ter na rede: carteira, minerador,
 \item Full node: inclui as funcionalidades de blockchain completo e roteamento;
 \item Minerador solo: inclui as funcionalidades de minerador, blockchain completo  e roteamento;
 \item Carteira leve (SPV): inclui as funcionalidades de carteira e roteamento;
-\item Nós mineradores: inclui as funcionalidades de minerador e  roteamento pool;
+\item Pool de mineradores: inclui as funcionalidades de minerador e  roteamento pool;
 \item Carteira leve(SPV) Stratum:: inclui as funcionalidades de carteira e roteamento pool Stratum.
 \end{itemize}
 
-Os nós que possuem a funcionalidade de blockchain completo mantém uma cópia completa e atualizada  da blockchian, fazendo com que eles possam verificar de maneira autônoma e autoritária qualquer transação sem qualquer referência externa. Alguns nós mantêm apenas uma parte da blockchain verificando as transações utilizando um método chamado verificação de pagamento simplificado (SPV). Esses nós são conhecidos como SPV ou peso-leve já que não armazenam toda a blockchain.
+Os nós que possuem a funcionalidade de blockchain completo mantém uma cópia completa e atualizada  do blockchian, fazendo com que eles possam verificar de maneira autônoma e autoritária qualquer transação sem qualquer referência externa. Alguns nós mantêm apenas uma parte do blockchain verificando as transações utilizando um método chamado verificação de pagamento simplificado (SPV). Esses nós são conhecidos como SPV ou peso-leve já que não armazenam todo blockchain.
 
-Os nós com funcionalidade de minerar competem pela criação de novos blocos na blockchain resolvendo algoritmos de prova de trabalho. Alguns nós de mineração são nós completos que matem uma cópia da blockchian, enquanto outros são nós peso leve que participam de um pool de mineração. 
+Os nós com funcionalidade de minerar competem pela criação de novos blocos no blockchain resolvendo algoritmos de prova de trabalho. Alguns nós de mineração são nós completos que matem uma cópia do blockchian, enquanto outros são nós peso leve que participam de um pool de mineração. 
+
+Os full nodes validam as transações que estão sendo inseridas na rede e são eles que propagam esses novas transações para outros nos até chegarem nos nós mineradores. Caso uma transação não seja válida ela não será propagada pelo full node.
 
 As carteiras Bitcoin também podem fazer parte de um Full node para validar todas as transações da rede. Porém, cada vez mais is usuários utilizam carteiras SVP, isso vem ocorrendo porque cada vez mais os usuários vem usando carteiras em dispositivos com poucos recursos com um smartphone. 
 
@@ -487,12 +490,12 @@ Assim que uma ou mais conexões são estabelecidas, o novo nó deve enviar mensa
 
 Como os nós podem ficar offline line a qualquer momento os nós ativos precisam continuar procurando novos nós a medida que eles perdem conexões antigas.
 
-\subsection*{Verificação simplificada de pagamento}
+%\subsection*{Verificação simplificada de pagamento}
 
 \subsection{Transações na rede Bitcoin}
 \label{section:Transações na rede Bitcoin}
 
-O ciclo de vida de uma transação começa em sua criação, conhecido também como originação. Após ser criada ela deve ser assinada por uma ou mais assinaturas indicando a autorização da transferência dos fundos indicados na transação. Ela então deve ser transmitida para a rede através de um processo de \textit{flooding} (inundação). Ao chegar a um nó minerador as transações ficam em um local chamado de pool de transações, até ser incluída em um bloco da blockchain.
+O ciclo de vida de uma transação começa em sua criação, conhecido também como originação. Após ser criada ela deve ser assinada por uma ou mais assinaturas indicando a autorização da transferência dos fundos indicados na transação. Ela então deve ser transmitida para a rede através de um processo de \textit{flooding} (inundação). Ao chegar a um nó minerador as transações ficam em um local chamado de pool de transações, até ser incluída em um bloco do blockchain.
 
 O remetente da transação não precisa confiar nos nós que ele utiliza para transmitir a transação, contanto que ele utilize mais de uma para garantir a propagação, e da mesma maneira os nós destinatários não precisam conhecer a identidade de que envia a transação. Como uma transação bitcoin não contem nenhum dado confidencial ela pode ser transmitida publicamente em qualquer transporte de rede conveniente.
 
@@ -517,11 +520,11 @@ Cada \textit{output} de transação possui 3 campos: \textit{nValue}, \textit{sc
 
 Os \textit{outputs} de transação geram pedaços indivisíveis de bitcoin gastáveis chamadas de  \textit{output} de transação não gastos (\textit{Unspent transaction output}) ou UTXO. Ao criar um UTXO ele se torna indivisível, ou seja, seu valor não pode ser divido assim como não se pode dividir uma moeda. Esses UTXO são reconhecidos na rede como quantias de bitcoin que podem ser gastas em uma transação futura.
 
-Os UTXOs são monitorados e armazenados na memória RAM por todos os nós da rede Bitcoin como um conjunto de dados chamado de \textit{pool} UTXO ou UTXO \textit{set}. Sua administrarão é feita automaticamente pela carteira Bitcoin do usuário, assim como sua quantia de Bitcoins. Essa quantia que toda carteira diz possuir não passa de todos os UTXOs associados a chave primaria daquela carteira que estão espalhados na Blockchain. Como efeito disso, não existe um armazenamento de saldo em uma carteira Bitcoin, o que existe na verdade são UTXOs dispersos na blockchain vinculados a uma chave. O conceito de saldo de uma carteira Bitcoin não passa de uma abstração da operação de busca na blockchain e a soma de todas as UTXOs pertencentes a chave primaria de uma carteira.
+Os UTXOs são monitorados e armazenados na memória RAM por todos os nós da rede Bitcoin como um conjunto de dados chamado de \textit{pool} UTXO ou UTXO \textit{set}. Sua administrarão é feita automaticamente pela carteira Bitcoin do usuário, assim como sua quantia de Bitcoins. Essa quantia que toda carteira diz possuir não passa de todos os UTXOs associados a chave primaria daquela carteira que estão espalhados no Blockchain. Como efeito disso, não existe um armazenamento de saldo em uma carteira Bitcoin, o que existe na verdade são UTXOs dispersos no blockchain vinculados a uma chave. O conceito de saldo de uma carteira Bitcoin não passa de uma abstração da operação de busca no blockchain e a soma de todas as UTXOs pertencentes a chave primaria de uma carteira.
 
 Os \textit{inputs} de transação são referências aos UTXOs que serão utilizados na transação. Cada \textit{input} possui quatro campos: \textit{hash}, \textit{n}, \textit{coinbaseLen} e \textit{nSequence}. O campo \textit{hash} corresponde ao duplo hash da transacão no blockchain que contém o UTXO que está sendo utilizado no \textit{input}, servindo como referência. O segundo campo armazena a posição do UTXO na transacão anterior, como um index de um vetor. O \textit{scriptSigLen} armazena o tamanho do \textit{scriptSig} que é o script que libera a utilização do UTXO. O \textit{nSequence} armazena o número de sequência do input de transação. Ele foi planejado para a funcionalidade de atualização da transação antes de ser incluída em um bloco através de múltiplas assinaturas, porém essa funcionalidade foi removida para reduzir a complexidade do protocolo.
 
-O \textit{nLockTime} serve como uma trava de tempo para a transação. Assim que o tempo estipulado pelo \textit{nLockTime} for ultrapassado a transação é travada é pode ser incluída em um bloco. Se o valor do \textit{nLockTime} dor 0 significa que a transação está travada, um valor menor que $5*10^8$ corresponde ao número de blocos que deve-se ter para travar a transação e um valor igual ou acima de $5*10^8$ corresponde ao tempo no formato UNIX que deve-se obter.
+O \textit{nLockTime} serve como uma trava de tempo para a transação. Assim que o tempo estipulado pelo \textit{nLockTime} for ultrapassado a transação é travada é pode ser incluída em um bloco. Se o valor do \textit{nLockTime} f	or 0 significa que a transação está travada, um valor menor que $5*10^8$ corresponde ao número de blocos que deve-se ter para travar a transação e um valor igual ou acima de $5*10^8$ corresponde ao tempo no formato UNIX que deve-se obter.
 
 \begin{figure}[H]
     \centering
@@ -532,7 +535,7 @@ O \textit{nLockTime} serve como uma trava de tempo para a transação. Assim que
 
 Pode parecer estranha a necessidade de dois \textit{outputs}, mas como um UTXO é indivisível é necessário gerar um troco na transação, e esse segundo output é uma transação de volta para a carteira do usuário com o valor do troco que de ser gerado. Por exemplo,um usuário possui 3 UTXOs de Bitcoin e deseja fazer uma transação de 1 Bitcoin, essa transação precisará consumir todos os 3 UTXOs e irá produzir 2 outpus: uma para o destinatário da transação no valor de 1\bitcoinA{} e outro no valor de 2\bitcoinA{} menos a taxa do minerador como troco de volta para o usuário.
 
-A taxa de transação é paga ao minerador que processou a transação em um bloco como recompensa pelo seu processamento e gasto de energia é são calculadas de acordo com o tamanho da transação em kilobytes, e também servem como desestimuladoras de transações \textit{spam}. As taxas de transação afetam a prioridade do processamento de uma transação, significando uma uma transação com uma taxa alta podem ser incluídas na blockchain mais rapidamente do que uma transação de com uma taxa muito baixa. Um taxa de transação não é obrigatória em uma transação, e as transações sem taxa podem ser processadas.
+A taxa de transação é paga ao minerador que processou a transação em um bloco como recompensa pelo seu processamento e gasto de energia é são calculadas de acordo com o tamanho da transação em kilobytes, e também servem como desestimuladoras de transações \textit{spam}. As taxas de transação afetam a prioridade do processamento de uma transação, significando uma uma transação com uma taxa alta podem ser incluídas no blockchain mais rapidamente do que uma transação de com uma taxa muito baixa. Um taxa de transação não é obrigatória em uma transação, e as transações sem taxa podem ser processadas.
 
 O valar dessa taxa é calculado através da subtração da soma de todos os \textit{inputs} com a soma de todos os \textit{outputs} ($\sum_{i=0}^{N} \textit{inputs} - \sum_{i=0}^{K} \textit{outputs}$), o valor dessa operação será o valor da taxa. As taxas dadas ao minerador são transferidas para ele através de uma transação criado por ele é inserida no bloco que foi minerado.
 
@@ -619,7 +622,7 @@ Esse script de validação será executado na seguinte forma.
 \item O operador OP\_DUP é executado, ele duplica o dado que está no topo da pilha e o resultado é empilhado;
 \item O operador OP\_HASH160 é executado, ele aplica o hash RIPEMD160(SHA256) no dado que está no topo da pilha e empilha o resultado;
 \item O hash da chave pública (enderećo Bitcoin) de Bob é empilhado;
-\item A operaćão OP\_EQUALVERIFY é executada, essa operação retira da pilha dois dados mais próximos ao topo e os compara. No caso do P2PKH será comparado o hash da chave pública de Bob empilhada em 5 com o calculada em 4. Se os hashs forem igual ambos são removidos e a operação continua;
+\item A operaćão OP\_EQUALVERIFY é executada, essa operação retira da pilha dois dados mais próximos ao topo e os compara. No caso do P2PKH será comparado o hash da chave pública de Bob empilhada em 5 com o calculada em 4. Se os hashs forem iguais, ambos são removidos e a operação continua;
 \item É executada a operação OP\_CHECKSIG, ela verifica se a assinatura de Bob combina com a chave pública fornecida, se a assinatura combinar com a chave pública fornecida a operação empilha o valor TRUE na pilha. As assinaturas no Bitcoin utilizam o Algoritmo de Assinatura Digital de Curvas Elípticas(ECDSA).
 \end{enumerate}
 
@@ -722,28 +725,28 @@ Script de destravamento & Ass1 ... Assn                                         
 
 \subsection*{Data Recording Output (OP\_RETURN)}
 
-Todas as transações da rede Bitcoin são armazenas em um "banco de dados" distribuído chamado Blockchain, o funcionamento desse sistema será explicado mais adiante. Esse sistema potencial muito mais amplo do que apenas pagamentos, muitos desenvolvedores tentaram utilizar da segurança e resiliência da Blockchain para aplicações como cartórios digitais, certificados de ações e contratos \textit{smart}. As primeiras tentativos surgiram ao tentar criar \textit{outputs} de transação que registravam dados na Blockchain.
+Todas as transações da rede Bitcoin são armazenas em um "banco de dados" distribuído chamado Blockchain, o funcionamento desse sistema será explicado mais adiante. Esse sistema potencial muito mais amplo do que apenas pagamentos, muitos desenvolvedores tentaram utilizar da segurança e resiliência do Blockchain para aplicações como cartórios digitais, certificados de ações e contratos \textit{smart}. As primeiras tentativos surgiram ao tentar criar \textit{outputs} de transação que registravam dados no Blockchain.
 
-Quando a ideia de utilizar a Blockchain do Bitcoin  consideram esse uso abusivo, enquanto outros acreditaram que isso mostrava a enorme capacidade dessa tecnologia. Os que eram contra argumentavam que isso causaria um "inchaço na blockchain", trazendo uma carga par os nós que armazenam a Blockchain em disco. Além disso, esse processo criaria  falsas transações já que utilizam o campo de endereço do destinatário para armazenar dados, fazendo com que o UTXO jamais seja gasto. Essas transações que não podem ser gastas jamais seriam removidas do \textit{pool} UTXO fazendo-o crescer infinitamente. 
+Quando a ideia de utilizar o Blockchain do Bitcoin  consideram esse uso abusivo, enquanto outros acreditaram que isso mostrava a enorme capacidade dessa tecnologia. Os que eram contra argumentavam que isso causaria um "inchaço" no blockchain", trazendo uma carga par os nós que armazenam o blockchain em disco. Além disso, esse processo criaria  falsas transações já que utilizam o campo de endereço do destinatário para armazenar dados, fazendo com que o UTXO jamais seja gasto. Essas transações que não podem ser gastas jamais seriam removidas do \textit{pool} UTXO fazendo-o crescer infinitamente. 
 
 %Review
 Para resolver esse problema na versão BitcoinCore 0.9.0 foi introduzido o operador OP\_return, esse operador permitia que fosse adicionado 40 bytes de não-pagamento em um \textit{output} de transação, na versão BitconCore 0.12.0 esse limite foi aumentado para 83 bytes. Esse operador cria \textit{outputs} que são comprovadamente não gastáveis que não precisam ser registrados no \textit{pool} UTXO.
 
 
 \subsection{Blockchain}
-A blockchain funciona como uma de registros distribuído e compartilhado. No bitcoin a blockchain funciona como um livro-razão onde são armazenadas todas as transações já feitas. Seu principal proposito é garantir uma ordem cronológica das transações e prevenir o problema de gasto duplo (double spending), apresentado por Hal Finney em seu whitepaper intitulado Digital Cash \& Privacy. 
+O blockchain funciona como uma de registros público distribuído e compartilhado. No bitcoin o blockchain funciona como um livro-razão onde são armazenadas todas as transações já feitas. Seu principal proposito é garantir uma ordem cronológica das transações e prevenir o problema de gasto duplo (double spending), apresentado por Hal Finney em seu whitepaper intitulado Digital Cash \& Privacy. 
 
-A estrutura da blockchain é vista como um estrutura ordenada de blocos de dados com cada bloco sendo identificado pelo seu hash (SHA256). Cada bloco contém uma referência ao bloco anterior (bloco pai) em seu cabeçalho, essa referência corresponde ao identificador do bloco anterior. Isso empoe uma ordem cronológica nos blocos e por consequência nas transações, já que não é possível criar o hash de um bloco que ainda não existe na blockchain. O único bloco que não possui a referência para seu bloco pai é o bloco gênese, pelo fato de ser o primeiro bloco da blockchain. 
+A estrutura do blockchain é vista como um estrutura ordenada de blocos de dados com cada bloco sendo identificado pelo seu hash (SHA256). Cada bloco contém uma referência ao bloco anterior (bloco pai) em seu cabeçalho, essa referência corresponde ao identificador do bloco anterior. Isso empoe uma ordem cronológica nos blocos e por consequência nas transações, já que não é possível criar o hash de um bloco que ainda não existe no blockchain. O único bloco que não possui a referência para seu bloco pai é o bloco gênese, pelo fato de ser o primeiro bloco do blockchain. 
 
-O bloco gênese é o ancestral comum de todos os blocos do blockchain. Todo nó começa com o bloco gênese em sua blockchain porque ele está estaticamente codificado no cliente bitcoin, de modo que ele não pode ser alterado sem recompilar o código-fonte. Como o nó conhece todos os dados da estrutura do bloco gênese, ele contém um ponto de partida da blockchain seguro, a partir do qual pode montar uma blockchain de confiança. 
+O bloco gênese é o ancestral comum de todos os blocos do blockchain. Esse bloco gênese está estaticamente codificado no cliente bitcoin fazendo com que todo nó comece com o bloco gênese em seu blockchain. Como o nó conhece todos os dados da estrutura do bloco gênese, ele contém um ponto de partida do blockchain seguro, a partir do qual pode montar uma blockchain de confiança. 
 
-Devido cronologia existente entre os blocos podemos abstrair a blockchain como um empilhamento de blocos de dados, com cada  novo bloco gerado sendo empilhado sobre o bloco mais recente da blockchain. Essa visualização de blocos empilhados possibilita a utilização de termos como "altura", para se referir a posição de um bloco em relação ao primeiro bloco do Blockchain (Bloco gênese), e "topo", para se referir ao bloco mais recente da blockchain. 
+Devido cronologia existente entre os blocos podemos abstrair o blockchain como um empilhamento de blocos de dados, com cada  novo bloco gerado sendo empilhado sobre o bloco mais recente do blockchain. Essa visualização de blocos empilhados possibilita a utilização de termos como "altura", para se referir a posição de um bloco em relação ao primeiro bloco do blockchain (Bloco gênese), e "topo", para se referir ao bloco mais recente do blockchain. 
 
-Como cada bloco possui a o hash de seu bloco pai em seu cabeçalho isso irá influenciar no seu hash, assim, se ocorrer uma mudança em um bloco isso afetará seu hash que também afetará os blocos acima causando um efeito dominó. Esse efeito dominó garante a  que um bloco que tenha algumas gerações o sucedendo não possa ser alterando, a não ser que haja um calculo forçado do hash de todos os blocos subsequentes. Essa é uma das características chave para a segurança da blockchain, pois a mudança de um bloco que já possui uma certa profundidade exigira um processo computacional enorme.
+Como cada bloco possui a o hash de seu bloco pai em seu cabeçalho isso irá influenciar no seu hash, assim, se ocorrer uma mudança em um bloco isso afetará seu hash que também afetará os blocos acima causando um efeito dominó. Esse efeito dominó garante a  que um bloco que tenha algumas gerações o sucedendo não possa ser alterando, a não ser que haja um calculo forçado do hash de todos os blocos subsequentes. Essa é uma das características chave para a segurança do blockchain, pois a mudança de um bloco que já possui uma certa profundidade exigira um processo computacional enorme.
 
-Os blocos também possuem a solução para o algoritmo de prova de trabalho. O trabalho computacional envolvido na solução do problema de prova de trabalho é utilizado como um esquema de votação entre os nós da rede para que eles concordem com a versão da blockchain. No geral, os nós concordam a versão da blockchain que envolva o maior poder computacional utilizado para ser criado.
+Os blocos também possuem a solução para o algoritmo de prova de trabalho. O trabalho computacional envolvido na solução do problema de prova de trabalho é utilizado como um esquema de votação entre os nós da rede para que eles concordem com a versão do blockchain. No geral, os nós concordam a com a versão do blockchain que envolva o maior poder computacional utilizado para ser criado.
 
-Como os nós mineradores da rede competem na solução de prova de trabalho para incluir um bloco na blockchain, existe a possibilidade de dois blocos serem minerados ao mesmo tempo, causando um bifurcação na blockchain visto pela rede. Nesse caso os nós irão aceitar o bloco que receberem primeiro e continuar a construir a blockchain a partir daquele bloco. Assim que um novo bloco for adicionado a uma das bifurcações, aquela com maior altura será considerada a blockchain válida e as transações do bloco descartado serão adicionadas ao pool de transações.
+Como os nós mineradores da rede competem na solução de prova de trabalho para incluir um bloco no blockchain, existe a possibilidade de dois blocos serem minerados ao mesmo tempo, causando um bifurcação no blockchain visto pela rede. Nesse caso os nós irão aceitar o bloco que receberem primeiro e continuar a construir o blockchain a partir daquele bloco. Assim que um novo bloco for adicionado a uma das bifurcações, aquela com maior altura será considerado o blockchain válido e as transações do bloco descartado serão adicionadas ao pool de transações.
 
 
 
@@ -779,13 +782,61 @@ No payload temos os campos \textit{\#vtx} que armazena a quantidade de transaç�
     \label{fig:Ref_blocos}
 \end{figure}
 
-Perceba que o não está incluído na estrutura de dados do bloco, nem quando o bloco é transmitido na rede e nem quando ele é armazenado na blockchain. O hash deve ser calculado por cada nó assim que o bloco é recebido, e pode ser armazenado em uma tabela separada como parte dos metadados do bloco para facilitar a indexação e uma coleta mais rápida dos blocos em disco. 
+Perceba que o não está incluído na estrutura de dados do bloco, nem quando o bloco é transmitido na rede e nem quando ele é armazenado no blockchain. O hash deve ser calculado por cada nó assim que o bloco é recebido, e pode ser armazenado em uma tabela separada como parte dos metadados do bloco para facilitar a indexação e uma coleta mais rápida dos blocos em disco. 
 
-\subsection*{Árvode de Merkle}
+%\subsection*{Árvode de Merkle}
 
-\subsection*{Filtros Bloom}
+%\subsection*{Filtros Bloom}
  
-   
+\subsection{Mineração} 
+A mineração é um dos processos que torna o bitcoin especial. Ele é o que garante a segurança da rede bitcoin e permite a existência de um consenso em toda a rede sem a necessidade de uma autoridade central. Ela também protege a rede bitcoin contra transações fraudulentas e o problema de gasto duplo (\textit{double spending}).
+
+Esse processo de mineração é o responsável pela criação de novos blocos que serão inseridos no blockcahin, e ele é executados pelos nós mineradores da rede. Esses nós apuram e validam todas as transações que serão inseridas no bloco, e cada novo bloco é "minerado" em média a cada 10 minutos.
+
+Além de gerar novos blocos a mineração também é responsável por inserir novas moedas na rede. Essas moedas são geradas através da transação coinbase para minerador que gerou o novo bloco como recompensa. Essa recompensa aos minerados é o que gera a oferta monetária do bitcoin, semelhante à maneira que um banco central emite dinheiro através da impressão de novas cédulas. A quantidade de bitoins de uma transação coinbase diminuiu pela metade a cada 210.000 blocos minerados (em média a cada 4 anos). No começo do bitcoin, em janeiro de 2009, uma transação coinbase continha 50 bitcoins, essa quantidade caiu para 25 em novembro de 2012 e em 2016 caiu para 12,5. Com base nessa fórmula, a remuneração do bitcoin diminuirá exponencialmente até aproximadamente o ano de 2140, quando todos os 20,99999998 milhões de bitcoins já estarão em circulação.
+
+\subsection*{O consenso descentralizado}
+Todos os modelos de pagamento tradicionais utilizam uma autoridade central que forneça um serviço de compensação, verificação e registro de todas as transações. O bitcoin não possui uma autoridade central para verificar e compensar as transações, ele utiliza o blockchain como um registro público de todas as transações da rede e que todos o participantes confiam e aceitam com o registro oficial de posse dos bitcoins.
+
+A principal invenção de Satoshi Nakamoto é o mecanismo descentralizado utilizado para geral o consenso emergente. Diz-se emergente porque o consenso não é atingido de maneira explícita, não existe uma eleição ou um momento exato fixo no qual o consenso é atingido. Ao invés disso o consenso emerge da interação assíncrona de vários nós independentes, com todos seguindo regras simples.
+
+Esse consenso descentralizado emerge da interação de quatro processos que ocorrem independentemente nós nos da rede.
+
+\begin{itemize}
+  \item Verificação independente de cada transação pelos Full nodes baseado em uma extensa lista de critérios;
+  \item Agregação independente das transações em novos blocos pelos nós mineradores, associado a prova de que um processo computacional foi realizado através do algoritmo prova-de-trabalho;
+  \item Verificação independente dos novos blocos por cada nó;
+  \item Seleção independente por cada nó do blockchain com o maior poder computacional acumulado demostrado através do algoritmo de prova de trabalho.
+\end{itemize}  
+
+\subsection*{Verificação independente das transações}
+Vimos em \ref{section:Transações na rede Bitcoin} que uma transação após ser criada é propagada na rede através de nós da rede bitcoin. Porém antes de propagar uma transação para os seus vizinhos o nó deve primeiro validá-la e somente propagar as transações válidas e descartar as transações inválidas.
+
+Cada nó verifica as transações de acordo com uma lista de verificações com vários critérios:
+
+\begin{itemize}
+\item A sintaxe da transação e estrutura de dados devem estar corretas;
+\item A lista de \textit{inputs} e \textit{outputs} não devem estar vazias;
+\item O tamanho da transação em bytes deve ser menor que \texttt{MAX\_BLOCK\_SIZE};
+\item O número de operações de assinatura contidas na transação é menor que o limite de operações de assinatura;
+\item O scriptSig (script de destravamento) só pode empurrar números para a pilha, e o scriptPubKey (script de destravamento) deve coincidir com as formas isStandard;
+\item Deve existir transações correspondentes no pool ou em um bloco no blockchain;
+\item Para cada \textit{input}, se o \textit{output} referenciado existir em qualquer outra transação no pool, a transação deve ser rejeitada;
+\item Para cada \textit{input}, buscar no blockchain e no pool de transações pelo \textit{output} de transação referenciado. Se o \textit{output} de transação estiver faltando para qualquer \textit{input} essa será uma transação órfã. Ela deve ser adicionada ao pool de transações órfãs, se uma transação correspondente já não estiver no pool;
+\item Para cada \textit{input}, se o \textit{output} de transação referenciado for um \textit{output coinbase} ele deve respeitar o valor \texttt{COINBASE\_MATURITY} confirmações;
+\item Para cada \textit{input}, o \textit{output} referenciado deve existir e não pode ter sido gasto previamente;
+\item Ao usar os \textit{outputs} de transações referenciados para administrar os valores de \textit{input}, deve-se verificar se cada valor de \textit{input}, assim como a soma, estão na faixa permitida de valores (menor que 21 milhões de bitcoin e maior que 0);
+\item Rejeitar se a soma dos \textit{inputs} for menor que a soma dos \textit{outputs};
+\item rejeitar se a taxa de transação for muito baixa para entrar em um bloco vazio;
+\item Os scriptSig (script de destravamento) para cada \textit{input} devem ser validados em relação aos scriptPubKey (script de destravamento) dos \textit{outputs} correspondentes.
+\end{itemize}
+
+Essas condições podem ser vistas nas funções AcceptToMemoryPool, CheckTransaction e CheckInputs no cliente Bitcoin. Elas condições podem mudar ao longo do tempo para lidar com novos tipos de ataques de negação de serviço e para incluir novos tipos de transações.
+
+\subsection*{Inserindo transações em um bloco}
+Vimos em \ref{section:Tipos de nós} que existem dois tipos de mineradores, os mineradores solo e os mineradores pool. Os mineradores pool são aqueles que participam de um pool de mineração. Esses pools de mineração são utilizados pelos mineradores que não possuem um poder computacional grande suficiente e para ter alguma chance de minerar um bloco eles se juntam nesses pools para agrupar seu poder computacional e dividir a recompensa entre eles de acordo com sua contribuição para encontrar o bloco. Não iremos focar nos minerados pool, analisaremos o processo pelos minerados solo.
+
+
 \section{Conclusion}
 The conclusion goes here.
 
